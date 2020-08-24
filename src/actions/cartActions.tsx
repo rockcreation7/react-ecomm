@@ -16,18 +16,23 @@ const addToCart = (id: string) => async (
       return
   }
   //get product from cart
-  const {
+/*   const {
     cart: { cartItems },
   } = getState()
-
+ */
   console.log({ cart: id, product })
 
   dispatch({
     type: CART_ADD_ITEM,
-    payload: {...product},
+    payload: {
+      product: product._id,
+      name: product.name,
+      image: product.image,
+      price: product.price
+    },
   })
 
-  Cookie.set("cartItems", JSON.stringify(cartItems))
+/*   Cookie.set("cartItems", JSON.stringify(cartItems)) */
 }
 
 export { addToCart }

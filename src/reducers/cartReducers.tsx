@@ -5,13 +5,13 @@ interface cartAction {
   payload: {}
 }
 
-function cartReducer(
-  state = { cartItems: [], shipping: {}, payment: {} },
-  action: cartAction
-) {
+function cartReducer(state = { cartItems: [] }, action: cartAction) {
   switch (action.type) {
     case CART_ADD_ITEM:
-      return { cartItiems: [...state.cartItems, action.payload] }
+      if (state.cartItems) {
+        return { cartItems: [...state.cartItems, action.payload] }
+      }
+      return { cartItems: [action.payload] }
     default:
       return state
   }

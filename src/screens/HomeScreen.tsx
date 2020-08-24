@@ -11,7 +11,7 @@ export const HomeScreen: React.FC = () => {
   return (
     <>
       {data.products.map((product) => (
-        <>
+        <div key={product._id}>
           <Link to={"/product/" + product._id}>Go to Product detail</Link>
           <div>{product.name}</div>
           <div>{product.price}</div>
@@ -20,7 +20,7 @@ export const HomeScreen: React.FC = () => {
           <button onClick={() => handleAddToCart(product._id)}>
             Add To Cart
           </button>
-        </>
+        </div>
       ))}
     </>
   )

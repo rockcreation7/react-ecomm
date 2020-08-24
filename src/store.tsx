@@ -1,12 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux"
 import thunk from "redux-thunk"
 import { cartReducer } from "./reducers/cartReducers"
-
-const initialState = {
-  cart: { cartItems: {} }
+const initialState: RootState = {
+  cartItems: [],
 }
 const reducer = combineReducers({
-  cart: cartReducer,
+  cartItems: cartReducer,
 })
 
 declare global {
@@ -24,5 +23,5 @@ const store = createStore(
 export default store
 
 export type RootState = {
-  cart: { cartItems: {} }
+  cartItems: any
 }
