@@ -1,11 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux"
 import thunk from "redux-thunk"
 import { cartReducer } from "./reducers/cartReducers"
-const initialState: RootState = {
-  cartItems: [],
-}
+import Cookie from "js-cookie"
+
 const reducer = combineReducers({
-  cartItems: cartReducer,
+  cart: cartReducer,
 })
 
 declare global {
@@ -15,13 +14,11 @@ declare global {
 }
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
+const cartItems = Cookie.getJSON("cartItems") 
+console.log(cartItems)
+ 
 const store = createStore(
-  reducer,
-  initialState,
+  reducer, 
   composeEnhancer(applyMiddleware(thunk))
 )
 export default store
-
-export type RootState = {
-  cartItems: any
-}
