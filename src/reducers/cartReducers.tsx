@@ -9,7 +9,7 @@ interface cartAction {
 const cartItems = Cookie.getJSON("cartItems") || []
 
 function cartReducer(
-  state = { cartItems: cartItems, loading: true },
+  state = { cartItems: cartItems, loading: false },
   action: cartAction
 ) {
   switch (action.type) {
